@@ -1,30 +1,36 @@
+import {Link, Outlet, useNavigate} from "react-router-dom";
+import {NavigateQuery} from "@/utils/getQueryParams.ts";
 import './App.css'
-import {login, sentCaptcha} from "./api/login.ts";
-import {useEffect} from "react";
-import {Button} from 'react-vant';
-
-function Params() {
-    useEffect(() => {
-        login({id: 186016, limit: 1}).then(val => {
-            console.log(val)
-        })
-    }, [])
-    return (
-        <div className='names'>
-            我是张三
-        </div>
-    )
-}
 
 function App() {
-    const getCaptcha = async () => {
-        const res = await sentCaptcha({phone: '15978738332'})
-        console.log(res)
+    const naviteTo = useNavigate()
+    const toOther = () => {
+        naviteTo('/about', {
+            state: {id: 12212}
+        })
+    }
+    const toMore = () => {
+        naviteTo(NavigateQuery({url: '/more', query: {id: 12, name: 'test1'}}))
     }
     return (
         <>
-            <Button type='primary' onClick={getCaptcha}>点击获取验证码</Button>
-            <Params/>
+            <div>
+                <button>
+                    <Link to={'/child1'}>去child1</Link>
+                </button>
+                <button onClick={toMore}>
+                    去more
+                </button>
+                <button onClick={toOther}>
+                    <div className='name bg-black'>
+                        去about
+                    </div>
+                </button>
+                <Outlet/>
+                <footer>
+                    <input type="text" placeholder={'1111111111'}/>
+                </footer>
+            </div>
         </>
     )
 }
