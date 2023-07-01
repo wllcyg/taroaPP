@@ -2,6 +2,7 @@ import {Link, Outlet, useNavigate} from "react-router-dom";
 import {NavigateQuery} from "@/utils/getQueryParams.ts";
 import './App.css'
 
+
 function App() {
     const naviteTo = useNavigate()
     const toOther = () => {
@@ -22,7 +23,7 @@ function App() {
                     去more
                 </button>
                 <button onClick={toOther}>
-                    <div className='name bg-black'>
+                    <div className='name'>
                         去about
                     </div>
                 </button>
