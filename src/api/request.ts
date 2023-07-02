@@ -2,10 +2,10 @@ import type {AxiosInstance, AxiosRequestConfig, AxiosResponse} from 'axios'
 import axios from "axios"; // axios实例
 import qs from 'qs'
 
-type Result<T> = {
+export interface Result<T>  {
     code: number;
-    message: string;
-    result: T
+    data: T;
+    [key: string]: any; // 添加可选属性
 }
 
 export class Request {
@@ -41,7 +41,7 @@ export class Request {
     get<T = any>(
         url: string,
         params: object,
-    ): Promise<AxiosResponse<Result<T>>> {
+    ): Promise<T> {
         const paramsUrl = qs.stringify(params)
         const Url = `${url}?${paramsUrl}`
         return this.instance.get(Url, params)
@@ -51,7 +51,7 @@ export class Request {
         url: string,
         data?: any,
         config?: AxiosRequestConfig
-    ): Promise<AxiosResponse<Result<T>>> {
+    ): Promise<T> {
         return this.instance.post(url, data, config)
     }
 }

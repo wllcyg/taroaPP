@@ -32,5 +32,7 @@ export const AppWraper = styled.div.attrs(props => {
 
   .textcolor {
     color: green;
+    
   }
+  
 `
