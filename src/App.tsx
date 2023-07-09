@@ -13,6 +13,9 @@ function App() {
     const toMore = () => {
         naviteTo(NavigateQuery({url: '/more', query: {id: 12, name: 'test1'}}))
     }
+    const toRtk = () => {
+        naviteTo(NavigateQuery({url: '/rtk', query: {id: 12, name: 'test1'}}))
+    }
     return (
         <>
             <div>
@@ -21,6 +24,9 @@ function App() {
                 </button>
                 <button onClick={toMore}>
                     去more
+                </button>
+                <button onClick={toRtk}>
+                    去RTK
                 </button>
                 <button onClick={toOther}>
                     <div className='name'>

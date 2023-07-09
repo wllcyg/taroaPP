@@ -29,7 +29,11 @@ export const router = createHashRouter([
             {
                 path: '/more',
                 element: LazeComponent(() => import('@/pages/More.tsx'))
-            }
+            },
+            {
+                path: '/rtk',
+                element: LazeComponent(() => import('@/pages/Rtk.tsx'))
+            },
         ]
     },
     {

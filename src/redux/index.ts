@@ -5,11 +5,23 @@
  * 4. reduce
  * 5. 建议只存在一颗树
  * 6. 三大原则: 单一数据源  state只读  纯函数来进行修改
+ *
+ *
+ *
+ * RTK
+ * 1. configureStore
+ * 2. createSlice
+ * 3. createAsyncThunk
+ *
+ *
  * */
-import {createStore, applyMiddleware, compose} from 'redux'
-import reduce from "@/redux/reducer";
-import thunk from "redux-thunk";
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-const componseEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-export const store = createStore(reduce,componseEnhancers(applyMiddleware(thunk)))
+import { configureStore } from '@reduxjs/toolkit'
+import counterReduce from "@/redux/conters";
+import home from "@/redux/home";
+
+export const store = configureStore({
+    reducer:{
+        counter:counterReduce,// counte模块
+        home
+    }
+})
